@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://octodex.github.com/images/codercat.jpg" height="200px"/><img src="https://avatars1.githubusercontent.com/u/14985020?s=200&v=4" height="200px"/><img src="https://media.giphy.com/media/GxZ8bBoZJAIIo/giphy.gif" height="200px"/>
+  <img src="https://octodex.github.com/images/codercat.jpg" height="200px"/><img src="https://assets.zeit.co/image/upload/front/logos/white-bg-logo-1200.png" height="200px"/><img src="https://media.giphy.com/media/GxZ8bBoZJAIIo/giphy.gif" height="200px"/>
   <br><br>
   <b>Comment on a pull request on GitHub from your CI</b>
   <br><br>
