@@ -3,8 +3,9 @@
   <br><br>
   <b>Comment on a pull request on GitHub from your CI</b>
   <br><br>
-  <img src="https://travis-ci.org/siddharthkp/ci-github-comment.svg?branch=master&maxAge=3600"/>
 </p>
+
+&nbsp;
 
 Each pull request gets it's own deployment instance `https://{author}-{repo}-{branch-name}.now.sh`
 
@@ -20,7 +21,7 @@ Add a now API key to `package.json`
 
 ```json
 {
-  "now-ci-key": "secret"
+  "now-cd-key": "secret"
 }
 ```
 
@@ -30,7 +31,7 @@ Add a now API key to `package.json`
 
 ```yml
 after_success:
-  - npx now-cli
+  - npx now-cd
 ```
 
 &nbsp;
