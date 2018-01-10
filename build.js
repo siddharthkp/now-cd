@@ -5,6 +5,8 @@ const prettycli = require('prettycli')
 const tokens = require('./tokens')
 
 const handleError = err => {
+  console.log('----------------')
+  console.log(err)
   const message = `Could not add github status. ${err.status}: ${err.error.message}`
   prettycli.error(message, { silent: true, label: 'ERROR' })
 }
@@ -22,7 +24,6 @@ const build = new Build({
 build.start().catch(handleError)
 
 const pass = url => {
-  console.log(url)
   build.pass('Deployed to staging', `https://${url}`).catch(handleError)
   console.log('done')
 }
