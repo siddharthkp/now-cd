@@ -2,6 +2,11 @@
 
 let { event, repo, branch } = require('ci-env')
 
+/* debug statements */
+// repo = 'siddharthkp/now-cd-test'
+// branch = 'feature'
+/* end */
+
 const deploy = require('./deploy')
 const { getAlias, setAlias } = require('./alias')
 const remove = require('./remove')
