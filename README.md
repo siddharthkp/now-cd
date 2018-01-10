@@ -17,17 +17,25 @@ The master branch is deployed on `https://{author}-{repo}.now.sh`
 
 #### install
 
-Add a now API key to `package.json`
+You need 2 tokens for `now-cd` to work
 
-```json
-{
-  "now-cd-key": "secret"
-}
-```
+1. now API token
+
+You can generate a token from [account/tokens](https://zeit.co/account/tokens)
+
+2. Github API token
+
+You can generate a token from [settings/tokens/new](https://github.com/settings/tokens/new)
+
+Now set these in travis repository settings [This is how](https://docs.travis-ci.com/user/environment-variables/#Defining-Variables-in-Repository-Settings).
+
+Use `NOW_CD_ZEIT_TOKEN` and `NOW_CD_GITHUB_TOKEN` as keys.
 
 &nbsp;
 
 #### usage
+
+add this to `.travis.yml`:
 
 ```yml
 after_success:
