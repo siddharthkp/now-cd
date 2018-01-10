@@ -15,7 +15,7 @@ const build = new Build({
   sha,
   token: tokens.github,
   label: 'NOW_CD',
-  description: 'Deploying to staging...'
+  description: 'Deploying...'
 })
 
 /* auto start build */
