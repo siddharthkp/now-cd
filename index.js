@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 let { event, repo, branch } = require('ci-env')
+const { warn } = require('prettycli')
 
 /* debug statements */
 // repo = 'siddharthkp/now-cd-test'
@@ -29,14 +30,18 @@ const run = async alias => {
   if (oldInstance && newInstance !== oldInstance) await remove(oldInstance)
 }
 
-try {
-  run(alias)
-} catch (err) {
-  console.log(err)
-}
-
 /* Catch errors throughout the app for debugging */
 process.on('unhandledRejection', err => {
   console.log('unhandledRejection', err)
   process.exit(1)
 })
+
+if (event === 'push') {
+  try {
+    run(alias)
+  } catch (err) {
+    console.log(err)
+  }
+} else {
+  warn('now-cd only works on push events')
+}
