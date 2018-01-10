@@ -13,8 +13,6 @@ const build = new Build({
   description: 'Deploying...'
 })
 
-console.log(build.pass.toString())
-
 /* auto start build */
 build.start()
 
