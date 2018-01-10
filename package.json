@@ -12,6 +12,7 @@
   "dependencies": {
     "ci-env": "1.5.1",
     "execa": "0.8.0",
+    "github-build": "1.2.0",
     "now": "8.4.0",
     "prettycli": "1.4.3"
   }

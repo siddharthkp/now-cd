@@ -1,11 +1,11 @@
 const exec = require('execa')
 const { info, loading } = require('prettycli')
-const token = require('./token')
+const tokens = require('./tokens')
 
 const deploy = _ => {
   return new Promise((resolve, reject) => {
     loading('NOW CD', 'Deployment started')
-    exec.shell(`../node_modules/.bin/now -t ${token}`).then(result => {
+    exec.shell(`../node_modules/.bin/now -t ${tokens.now}`).then(result => {
       if (result.stderr) reject(result.stderr)
       else {
         let url = result.stdout

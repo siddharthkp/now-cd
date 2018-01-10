@@ -29,7 +29,7 @@ You can generate a token from [settings/tokens/new](https://github.com/settings/
 
 Now set these in travis repository settings [This is how](https://docs.travis-ci.com/user/environment-variables/#Defining-Variables-in-Repository-Settings).
 
-Use `NOW_CD_ZEIT_TOKEN` and `NOW_CD_GITHUB_TOKEN` as keys.
+Use `NOW_CD_TOKEN` and `NOW_CD_GITHUB_TOKEN` as keys.
 
 &nbsp;
 
