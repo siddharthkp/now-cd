@@ -30,7 +30,7 @@ const run = async alias => {
   /* Step 4: If it exists, delete the old instance */
   if (oldInstance && newInstance !== oldInstance) await remove(oldInstance)
   /* Step 5: Add github status */
-  build.pass(alias)
+  await build.pass(alias)
 }
 
 /* Catch errors throughout the app for debugging */
