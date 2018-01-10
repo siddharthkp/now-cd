@@ -14,7 +14,7 @@ const build = new Build({
   repo,
   sha,
   token: tokens.github,
-  label: 'NOW_CD',
+  label: 'now-cd',
   description: 'Deploying...'
 })
 
@@ -22,7 +22,9 @@ const build = new Build({
 build.start().catch(handleError)
 
 const pass = url => {
+  console.log(url)
   build.pass('Deployed to staging', `https://${url}`).catch(handleError)
+  console.log('done')
 }
 const error = _ => build.error('Deployment failed!').catch(handleError)
 
