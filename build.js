@@ -13,18 +13,16 @@ const handleError = err => {
 const build = new Build({
   repo,
   sha,
-  token: 'debugging',
+  token: tokens.github,
   label: 'NOW_CD',
   description: 'Deploying to staging...'
 })
-
-console.log(build)
 
 /* auto start build */
 build.start().catch(handleError)
 
 const pass = url => {
-  console.log(url)
+  console.log('url: ', url)
   build.pass('Deployed to staging', url).catch(handleError)
 }
 const error = _ => build.error('Deployment failed!').catch(handleError)
