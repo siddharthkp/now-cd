@@ -22,8 +22,7 @@ const build = new Build({
 build.start().catch(handleError)
 
 const pass = url => {
-  console.log('url: ', url)
-  build.pass('Deployed to staging', url).catch(handleError)
+  build.pass('Deployed to staging', `https://${url}`).catch(handleError)
 }
 const error = _ => build.error('Deployment failed!').catch(handleError)
 
