@@ -11,6 +11,7 @@ const { warn } = require('prettycli')
 const deploy = require('./deploy')
 const { getAlias, setAlias } = require('./alias')
 const remove = require('./remove')
+const build = require('./build')
 
 const authorAndRepo = repo.replace('/', '-') // repo ~ siddharthkp/ci-env
 
@@ -28,6 +29,8 @@ const run = async alias => {
   await setAlias(newInstance, alias)
   /* Step 4: If it exists, delete the old instance */
   if (oldInstance && newInstance !== oldInstance) await remove(oldInstance)
+  /* Step 5: Add github status */
+  await build.pass(alias)
 }
 
 /* Catch errors throughout the app for debugging */
@@ -40,6 +43,7 @@ if (event === 'push') {
   try {
     run(alias)
   } catch (err) {
+    build.error()
     console.log(err)
   }
 } else {
