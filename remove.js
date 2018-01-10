@@ -6,7 +6,7 @@ const remove = url => {
   return new Promise((resolve, reject) => {
     loading('NOW CD', `Removing previous instance: ${url}`)
     exec
-      .shell(`now rm ${url} -y -t ${token}`)
+      .shell(`./node_modules/.bin/now rm ${url} -y -t ${token}`)
       .then(result => {
         info('NOW CD', `Removed previous instance`)
         resolve(result.stdout)
