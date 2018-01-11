@@ -41,7 +41,7 @@ process.on('unhandledRejection', err => {
   process.exit(1)
 })
 
-if (event === 'push') {
+if (branch === 'master' || event === 'pull_request') {
   try {
     run(alias)
   } catch (err) {
