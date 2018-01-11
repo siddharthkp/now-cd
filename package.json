@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "continuous deployment with now",
   "main": "index.js",
+  "bin": "index.js",
   "scripts": {
     "test": "cd test && npm t"
   },
