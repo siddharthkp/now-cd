@@ -19,11 +19,12 @@ const set = (url, alias) => {
 const get = alias => {
   return new Promise((resolve, reject) => {
     exec
-      .shell(command(`now alias ls -t ${tokens.now} | grep ${alias}`))
+      .shell(command(`now alias ls -t ${tokens.now}`))
       .then(result => {
         if (result.stdout) {
           // format: url.now.sh   alias.now.sh    time
-          const url = result.stdout.split('.now.sh')[0].trim()
+          const aliasRow = result.stdout.split('\n').filter(u => u.includes(alias))[0]
+          const url = aliasRow.split('.now.sh')[0].trim()
           info('NOW CD', `Found previous deployment instance: ${url}`)
           resolve(url)
         } else {
