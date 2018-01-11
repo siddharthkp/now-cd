@@ -11,8 +11,6 @@
   "author": "siddharthkp",
   "license": "MIT",
   "dependencies": {
-    "pretty-cli": "0.0.14",
-    "serve": "6.4.1",
-    "uninstall": "0.0.0"
+    "serve": "6.4.1"
   }
 }
