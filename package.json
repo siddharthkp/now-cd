@@ -1,6 +1,6 @@
 {
   "name": "now-cd",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "continuous deployment with now",
   "main": "index.js",
   "bin": "index.js",
