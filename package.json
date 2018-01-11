@@ -1,7 +1,7 @@
 {
-  "name": "now-cdp",
+  "name": "now-cd",
   "version": "1.0.0",
-  "description": "",
+  "description": "continuous deployment with now",
   "main": "index.js",
   "scripts": {
     "test": "cd test && npm t"
