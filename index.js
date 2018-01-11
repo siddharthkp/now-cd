@@ -21,6 +21,8 @@ if (branch === 'master') alias = `${authorAndRepo}.now.sh`
 else alias = `${authorAndRepo}-${branch}.now.sh`
 
 const run = async alias => {
+  /* Step 0: Set pending status on build */
+  build.start()
   /* Step 1: Deploy to a new instance */
   const newInstance = await deploy()
   /* Step 2: Get the old deployment instance for this alias */

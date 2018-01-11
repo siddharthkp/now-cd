@@ -13,10 +13,8 @@ const build = new Build({
   description: 'Deploying...'
 })
 
-/* auto start build */
-build.start()
-
+const start = _ => build.start()
 const pass = url => build.pass('Deployed to staging', `https://${url}`)
 const error = _ => build.error('Deployment failed!')
 
-module.exports = { pass, error }
+module.exports = { start, pass, error }
