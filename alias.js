@@ -1,13 +1,12 @@
 const exec = require('execa')
 const { info, loading } = require('prettycli')
-const tokens = require('./tokens')
 const command = require('./command')
 
 const set = (url, alias) => {
   return new Promise((resolve, reject) => {
     loading('NOW CD', 'Updating alias')
     exec
-      .shell(command(`now alias set ${url} ${alias} -t ${tokens.now}`))
+      .shell(command(`now alias set ${url} ${alias}`))
       .then(result => {
         info('NOW CD', result.stdout)
         resolve(alias)
@@ -19,7 +18,7 @@ const set = (url, alias) => {
 const get = alias => {
   return new Promise((resolve, reject) => {
     exec
-      .shell(command(`now alias ls -t ${tokens.now}`))
+      .shell(command(`now alias ls`))
       .then(result => {
         if (result.stdout) {
           // format: url.now.sh   alias.now.sh    time
