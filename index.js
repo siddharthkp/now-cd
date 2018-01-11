@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 
-let { event, repo, branch } = require('ci-env')
+let { event, repo, branch, ci } = require('ci-env')
 const { warn } = require('prettycli')
 
-/* debug statements */
-// repo = 'siddharthkp/now-cd-test'
-// branch = 'feature'
-/* end */
+if (ci !== 'travis') {
+  warn('now-cd only works in travisCI')
+  process.exit(0)
+}
 
 const deploy = require('./deploy')
 const { getAlias, setAlias } = require('./alias')
