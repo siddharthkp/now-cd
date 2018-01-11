@@ -29,10 +29,10 @@ const run = async alias => {
   const oldInstance = await getAlias(alias)
   /* Step 3: Map the alias to new instance */
   await setAlias(newInstance, alias)
-  /* Step 4: If it exists, delete the old instance */
-  if (oldInstance && newInstance !== oldInstance) await remove(oldInstance)
-  /* Step 5: Add github status */
+  /* Step 4: Add github status */
   await build.pass(alias)
+  /* Step 5: If it exists, delete the old instance */
+  if (oldInstance && newInstance !== oldInstance) await remove(oldInstance)
 }
 
 /* Catch errors throughout the app for debugging */
