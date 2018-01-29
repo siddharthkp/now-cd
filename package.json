@@ -14,7 +14,7 @@
     "ci-env": "1.5.1",
     "execa": "0.8.0",
     "github-build": "1.2.0",
-    "now": "8.4.0",
+    "now": "9.2.7",
     "pkg-dir": "2.0.0",
     "prettycli": "1.4.3"
   }
