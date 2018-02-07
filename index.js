@@ -36,8 +36,9 @@ const run = async alias => {
 }
 
 /* Catch errors throughout the app for debugging */
-process.on('unhandledRejection', err => {
+process.on('unhandledRejection', async err => {
   console.log('unhandledRejection', err)
+  await build.error()
   process.exit(1)
 })
 
