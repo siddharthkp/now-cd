@@ -1,7 +1,7 @@
 <p align="center">
   <img src="https://octodex.github.com/images/codercat.jpg" height="200px"/><img src="https://assets.zeit.co/image/upload/front/logos/white-bg-logo-1200.png" height="200px"/><img src="https://media.giphy.com/media/GxZ8bBoZJAIIo/giphy.gif" height="200px"/>
   <br><br>
-  <b>Comment on a pull request on GitHub from your CI</b>
+  <b>Staging instances with now + travis</b>
   <br><br>
 </p>
 
