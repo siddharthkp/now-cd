@@ -1,10 +1,12 @@
 #!/usr/bin/env node
 
-let { event, repo, branch, ci } = require('ci-env')
+let { event, repo, branch } = require('ci-env')
 const { warn } = require('prettycli')
 
-if (ci !== 'travis') {
-  warn('now-cd only works in travisCI')
+if (!branch || !repo || !event) {
+  warn(
+    'your CI environment does not seem to be supported. Check https://github.com/siddharthkp/ci-env'
+  )
   process.exit(0)
 }
 

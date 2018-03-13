@@ -11,7 +11,7 @@
   "author": "siddharthkp",
   "license": "MIT",
   "dependencies": {
-    "ci-env": "1.5.1",
+    "ci-env": "1.6.0",
     "execa": "0.8.0",
     "github-build": "1.2.0",
     "now": "9.2.7",
