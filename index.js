@@ -2,6 +2,7 @@
 
 let { event, repo, branch } = require('ci-env')
 const { warn } = require('prettycli')
+const argv = require('yargs').argv;
 
 if (!branch || !repo || !event) {
   warn(
@@ -19,8 +20,28 @@ const authorAndRepo = repo.replace('/', '-') // repo ~ siddharthkp/ci-env
 
 /* alias according to branch name */
 let alias
-if (branch === 'master') alias = `${authorAndRepo}.now.sh`
-else alias = `${authorAndRepo}-${branch}.now.sh`
+if (argv.alias) {
+  if (Array.isArray(argv.alias)) {
+    argv.alias.forEach(config => {
+      const [targetBranch, url] = config.split('=')
+      if (branch === targetBranch) {
+        alias = url;
+      }
+    })
+  } else {
+    const [targetBranch, url] = argv.alias.split('=');
+    if (branch === targetBranch) {
+      alias = url;
+    }
+  }
+}
+
+if (!alias) {
+  if (branch === 'master') alias = `${authorAndRepo}.now.sh`
+  else alias = `${authorAndRepo}-${branch}.now.sh`
+}
+
+console.log(alias)
 
 const run = async alias => {
   /* Step 0: Set pending status on build */
