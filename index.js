@@ -41,8 +41,6 @@ if (!alias) {
   else alias = `${authorAndRepo}-${branch}.now.sh`
 }
 
-console.log(alias)
-
 const run = async alias => {
   /* Step 0: Set pending status on build */
   build.start()
