@@ -2,7 +2,7 @@
 
 let { event, repo, branch } = require('ci-env')
 const { warn } = require('prettycli')
-const argv = require('yargs').argv;
+const argv = require('yargs').argv
 
 if (!branch || !repo || !event) {
   warn(
@@ -17,6 +17,7 @@ const remove = require('./remove')
 const build = require('./build')
 
 const authorAndRepo = repo.replace('/', '-') // repo ~ siddharthkp/ci-env
+let pushDeploymentBranches = ['master']
 
 /* alias according to branch name */
 let alias
@@ -24,15 +25,13 @@ if (argv.alias) {
   if (Array.isArray(argv.alias)) {
     argv.alias.forEach(config => {
       const [targetBranch, url] = config.split('=')
-      if (branch === targetBranch) {
-        alias = url;
-      }
+      pushDeploymentBranches.push(targetBranch)
+      if (branch === targetBranch) alias = url
     })
   } else {
-    const [targetBranch, url] = argv.alias.split('=');
-    if (branch === targetBranch) {
-      alias = url;
-    }
+    const [targetBranch, url] = argv.alias.split('=')
+    pushDeploymentBranches.push(targetBranch)
+    if (branch === targetBranch) alias = url
   }
 }
 
@@ -63,7 +62,11 @@ process.on('unhandledRejection', async err => {
   process.exit(1)
 })
 
-if (branch === 'master' || event === 'pull_request') {
+/*
+  deploy on a pull request event
+  OR  on a push event to master + alised branches
+*/
+if (event === 'pull_request' || pushDeploymentBranches.includes(branch)) {
   try {
     run(alias)
   } catch (err) {
