@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
 let { event, repo, branch } = require('ci-env')
-const { info, warn } = require('prettycli')
-const argv = require('yargs').argv
+const { warn } = require('prettycli')
+const argv = require('yargs').argv;
 
 if (!branch || !repo || !event) {
   warn(
@@ -25,13 +25,13 @@ if (argv.alias) {
     argv.alias.forEach(config => {
       const [targetBranch, url] = config.split('=')
       if (branch === targetBranch) {
-        alias = url
+        alias = url;
       }
     })
   } else {
-    const [targetBranch, url] = argv.alias.split('=')
+    const [targetBranch, url] = argv.alias.split('=');
     if (branch === targetBranch) {
-      alias = url
+      alias = url;
     }
   }
 }
@@ -44,22 +44,16 @@ if (!alias) {
 const run = async alias => {
   /* Step 0: Set pending status on build */
   build.start()
-  info('DEBUG', 'build started')
   /* Step 1: Deploy to a new instance */
   const newInstance = await deploy()
-  info('DEBUG', 'deployed to new instance')
   /* Step 2: Get the old deployment instance for this alias */
   const oldInstance = await getAlias(alias)
-  info('DEBUG', 'get old instance ' + alias)
   /* Step 3: Map the alias to new instance */
   await setAlias(newInstance, alias)
-  info('DEBUG', 'set alias')
   /* Step 4: Add github status */
   await build.pass(alias)
-  info('DEBUG', 'pass stuff')
   /* Step 5: If it exists, delete the old instance */
   if (oldInstance && newInstance !== oldInstance) await remove(oldInstance)
-  info('DEBUG', 'delete instance')
 }
 
 /* Catch errors throughout the app for debugging */
