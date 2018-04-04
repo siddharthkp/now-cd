@@ -17,7 +17,7 @@ const remove = require('./remove')
 const build = require('./build')
 
 const authorAndRepo = repo.replace('/', '-') // repo ~ siddharthkp/ci-env
-let pushDeploymentBranches = ['master']
+let deploymentBranches = []
 
 /* alias according to branch name */
 let alias
@@ -25,12 +25,12 @@ if (argv.alias) {
   if (Array.isArray(argv.alias)) {
     argv.alias.forEach(config => {
       const [targetBranch, url] = config.split('=')
-      pushDeploymentBranches.push(targetBranch)
+      deploymentBranches.push(targetBranch)
       if (branch === targetBranch) alias = url
     })
   } else {
     const [targetBranch, url] = argv.alias.split('=')
-    pushDeploymentBranches.push(targetBranch)
+    deploymentBranches.push(targetBranch)
     if (branch === targetBranch) alias = url
   }
 }
@@ -52,7 +52,9 @@ const run = async alias => {
   /* Step 4: Add github status */
   await build.pass(alias)
   /* Step 5: If it exists, delete the old instance */
-  if (oldInstance && newInstance !== oldInstance) await remove(oldInstance)
+  if (oldInstance && newInstance !== oldInstance && !deploymentBranches.includes(branch)) {
+    await remove(oldInstance)
+  }
 }
 
 /* Catch errors throughout the app for debugging */
@@ -66,7 +68,7 @@ process.on('unhandledRejection', async err => {
   deploy on a pull request event
   OR  on a push event to master + alised branches
 */
-if (event === 'pull_request' || pushDeploymentBranches.includes(branch)) {
+if (event === 'pull_request' || deploymentBranches.includes(branch) || branch === 'master') {
   try {
     run(alias)
   } catch (err) {
