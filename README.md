@@ -54,6 +54,18 @@ npx now-cd --alias "master=myapp.com" --alias "staging=staging.myapp.com"
 
 all commits to master will now be aliased to `myapp.com`, and all commits to the staging branch will now be aliased to `staging.myapp.com`!
 
+&nbsp;
+
+#### team account
+
+use the `--team` option to mention your team name
+
+```
+npx now-cd --team auth0-design
+```
+
+&nbps;
+
 #### like it?
 
 :star: this repo
