@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://octodex.github.com/images/codercat.jpg" height="200px"/><img src="https://assets.zeit.co/image/upload/front/logos/white-bg-logo-1200.png" height="200px"/><img src="https://media.giphy.com/media/GxZ8bBoZJAIIo/giphy.gif" height="200px"/>
+  <img src="https://user-images.githubusercontent.com/1863771/38306070-ebde452e-382c-11e8-8234-923167cc7566.png" height="200px"/>
   <br><br>
   <b>Staging instances with now + travis</b>
   <br><br>
