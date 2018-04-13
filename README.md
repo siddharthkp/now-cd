@@ -62,7 +62,7 @@ use the `--team` option to mention your team name
 npx now-cd --team auth0-design
 ```
 
-&nbps;
+&nbsp;
 
 #### like it?
 
