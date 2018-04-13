@@ -7,7 +7,7 @@ let teamFlag = ''
 if (argv.team) teamFlag = `--team=${argv.team}`
 
 const command = absolute => {
-  return `${rootDir}/node_modules/.bin/${absolute} -t ${tokens.now} ${teamFlag}`
+  return `${rootDir}/node_modules/.bin/${absolute} -t ${tokens.now} ${teamFlag} -e NODE_ENV=production`
 }
 
 module.exports = command
