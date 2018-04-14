@@ -3,11 +3,11 @@ const tokens = require('./tokens')
 const rootDir = pkgDir.sync(__dirname)
 const argv = require('yargs').argv
 
-let teamFlag = ''
-if (argv.team) teamFlag = `--team=${argv.team}`
+const teamFlag = argv.team ? `--team=${argv.team}` : ''
+const public = argv.public ? '--public' : ''
 
 const command = absolute => {
-  return `${rootDir}/node_modules/.bin/${absolute} -t ${tokens.now} ${teamFlag} -e NODE_ENV=production`
+  return `${rootDir}/node_modules/.bin/${absolute} -t ${tokens.now} ${public} ${teamFlag} -e NODE_ENV=production`
 }
 
 module.exports = command
