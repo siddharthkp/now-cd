@@ -62,6 +62,14 @@ use the `--team` option to mention your team name
 npx now-cd --team auth0-design
 ```
 
+#### make public 
+
+use the `--public` flag
+
+```
+npx now-cd --public
+```
+
 &nbsp;
 
 #### like it?
