@@ -48,12 +48,16 @@ const run = async alias => {
   /* Step 2: Get the old deployment instance for this alias */
   const oldInstance = await getAlias(alias)
   /* Step 3: Map the alias to new instance */
-  await setAlias(newInstance, alias)
+  await setAlias(newInstance.url, alias)
   /* Step 4: Add github status */
   await build.pass(alias)
   /* Step 5: If it exists, delete the old instance */
-  if (oldInstance && newInstance !== oldInstance && !deploymentBranches.includes(branch)) {
-    await remove(oldInstance)
+  if (
+    oldInstance.url &&
+    newInstance.url !== oldInstance.url &&
+    !deploymentBranches.includes(branch)
+  ) {
+    await remove(oldInstance.url)
   }
 }
 
