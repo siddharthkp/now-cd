@@ -9,11 +9,8 @@ const deploy = _ => {
     instance.deploy().then(deployment => {
       if (deployment.error) reject(deployment.error)
       else {
-        let url = deployment.url
-        info('NOW CD', `Deployed to ${url}`)
-        // follow same pattern throughout the app
-        url = url.replace('https://', '').replace('.now.sh', '')
-        resolve(url)
+        info('NOW CD', `Deployed to ${deployment.url}`)
+        resolve(deployment.url)
       }
     })
   })

@@ -1,5 +1,4 @@
 const { info, loading } = require('prettycli')
-
 const { alias } = require('now-wrapper')
 
 const set = (deploymentURL, aliasURL) => {
