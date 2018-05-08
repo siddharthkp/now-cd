@@ -19,7 +19,7 @@ const get = aliasURL => {
   return new Promise((resolve, reject) => {
     alias.get(aliasURL).then(result => {
       if (result.url) {
-        info('NOW CD', `Found previous deployment instance: ${url}`)
+        info('NOW CD', `Found previous deployment instance: ${result.url}`)
         resolve(result.url)
       } else {
         info('NOW CD', 'No previous deployment instances')

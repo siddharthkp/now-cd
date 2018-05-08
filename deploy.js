@@ -7,7 +7,6 @@ const deploy = _ => {
   return new Promise((resolve, reject) => {
     loading('NOW CD', 'Deployment started')
     instance.deploy().then(deployment => {
-      console.log(deployment)
       if (deployment.error) reject(deployment.error)
       else {
         let url = deployment.url
