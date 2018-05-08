@@ -55,7 +55,7 @@ const run = async alias => {
 
     /* Step 5: If it exists, delete the old instance */
     if (
-      oldInstance.url &&
+      oldInstance &&
       newInstance.url !== oldInstance.url &&
       !deploymentBranches.includes(branch)
     ) {
