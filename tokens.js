@@ -3,4 +3,6 @@ const tokens = {
   github: process.env.NOW_CD_GITHUB_TOKEN
 }
 
+process.env.NOW_TOKEN = tokens.now
+
 module.exports = tokens
