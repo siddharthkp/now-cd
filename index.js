@@ -53,8 +53,8 @@ const run = async alias => {
   await build.pass(alias)
 
   /* Step 5: If it exists, delete the old instance */
-  if (oldInstance && newInstance !== oldInstance && !deploymentBranches.includes(branch)) {
-    await remove(oldInstance)
+  if (oldInstance.url && newInstance !== oldInstance.url && !deploymentBranches.includes(branch)) {
+    await remove(oldInstance.url)
   }
 }
 
