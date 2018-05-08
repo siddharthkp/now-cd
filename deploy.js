@@ -3,17 +3,11 @@ const tokens = require('./tokens')
 
 const { instance } = require('now-wrapper')
 
-const deploy = _ => {
-  return new Promise((resolve, reject) => {
-    loading('NOW CD', 'Deployment started')
-    instance.deploy().then(deployment => {
-      if (deployment.error) reject(deployment.error)
-      else {
-        info('NOW CD', `Deployed to ${deployment.url}`)
-        resolve(deployment.url)
-      }
-    })
-  })
+const deploy = async () => {
+  loading('NOW CD', 'Deployment started')
+  const deployment = await instance.deploy()
+  info('NOW CD', `Deployed to ${deployment.url}`)
+  return deployment
 }
 
 module.exports = deploy
