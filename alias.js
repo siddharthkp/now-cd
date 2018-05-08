@@ -2,27 +2,27 @@ const exec = require('execa')
 const { info, loading } = require('prettycli')
 const command = require('./command')
 
-const set = (url, alias) => {
+const set = (deploymentURL, aliasURL) => {
   return new Promise((resolve, reject) => {
     loading('NOW CD', 'Updating alias')
-    exec
-      .shell(command(`now alias set ${url} ${alias}`))
-      .then(result => {
-        info('NOW CD', result.stdout)
-        resolve(alias)
-      })
-      .catch(err => reject(err))
+    alias.set(deploymentURL, aliasURL).then(result => {
+      if (result.error) reject(result.error)
+      else {
+        info('NOW CD', result.url)
+        resolve(aliasURL)
+      }
+    })
   })
 }
 
-const get = alias => {
+const get = aliasURL => {
   return new Promise((resolve, reject) => {
     exec
       .shell(command(`now alias ls`))
       .then(result => {
         if (result.stdout) {
           // format: url.now.sh   alias.now.sh    time
-          const aliasRow = result.stdout.split('\n').filter(u => u.includes(alias))[0]
+          const aliasRow = result.stdout.split('\n').filter(u => u.includes(aliasURL))[0]
           const url = aliasRow.split('.now.sh')[0].trim()
           info('NOW CD', `Found previous deployment instance: ${url}`)
           resolve(url)
