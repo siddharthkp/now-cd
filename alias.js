@@ -1,31 +1,22 @@
 const { info, loading } = require('prettycli')
 const { alias } = require('now-wrapper')
 
-const set = (deploymentURL, aliasURL) => {
-  return new Promise((resolve, reject) => {
-    loading('NOW CD', 'Updating alias')
-    alias.set(deploymentURL, aliasURL).then(result => {
-      if (result.error) reject(result.error)
-      else {
-        info('NOW CD', result.url)
-        resolve(aliasURL)
-      }
-    })
-  })
+const set = async (deploymentURL, aliasURL) => {
+  loading('NOW CD', 'Updating alias')
+  const result = await alias.set(deploymentURL, aliasURL)
+  info('NOW CD', result.url)
+  return aliasURL
 }
 
-const get = aliasURL => {
-  return new Promise((resolve, reject) => {
-    alias.get(aliasURL).then(instance => {
-      if (instance.url) {
-        info('NOW CD', `Found previous deployment instance: ${instance.url}`)
-        resolve(instance)
-      } else {
-        info('NOW CD', 'No previous deployment instances')
-        resolve(null)
-      }
-    })
-  })
+const get = async aliasURL => {
+  const instance = alias.get(aliasURL)
+  if (instance.url) {
+    info('NOW CD', `Found previous deployment instance: ${instance.url}`)
+    return instance
+  } else {
+    info('NOW CD', 'No previous deployment instances')
+    return null
+  }
 }
 
 module.exports = { getAlias: get, setAlias: set }
