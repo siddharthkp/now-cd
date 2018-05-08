@@ -16,10 +16,10 @@ const set = (deploymentURL, aliasURL) => {
 
 const get = aliasURL => {
   return new Promise((resolve, reject) => {
-    alias.get(aliasURL).then(result => {
-      if (result.url) {
-        info('NOW CD', `Found previous deployment instance: ${result.url}`)
-        resolve(result.url)
+    alias.get(aliasURL).then(instance => {
+      if (instance.url) {
+        info('NOW CD', `Found previous deployment instance: ${instance.url}`)
+        resolve(instance)
       } else {
         info('NOW CD', 'No previous deployment instances')
         resolve(null)
