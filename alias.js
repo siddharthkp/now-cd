@@ -6,7 +6,7 @@ const set = (url, alias) => {
   return new Promise((resolve, reject) => {
     loading('NOW CD', 'Updating alias')
     exec
-      .shell(command(`now alias set ${url} ${alias}`))
+      .shell(command(`now alias set ${url}.now.sh ${alias}`))
       .then(result => {
         info('NOW CD', result.stdout)
         resolve(alias)
@@ -22,7 +22,9 @@ const get = alias => {
       .then(result => {
         if (result.stdout) {
           // format: url.now.sh   alias.now.sh    time
-          const aliasRow = result.stdout.split('\n').filter(u => u.includes(alias))[0]
+          const aliasRow = result.stdout
+            .split('\n')
+            .filter(u => u.includes(alias))[0]
           const url = aliasRow.split('.now.sh')[0].trim()
           info('NOW CD', `Found previous deployment instance: ${url}`)
           resolve(url)
