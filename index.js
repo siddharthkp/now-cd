@@ -37,7 +37,8 @@ if (argv.alias) {
 
 if (!alias) {
   if (branch === 'master') alias = `${authorAndRepo}.now.sh`
-  else alias = `${authorAndRepo}-${branch}.now.sh`
+  else alias = `${authorAndRepo}-${branch.replace(/\//g, '--')}.now.sh`
+  // replace / in alias with --
 }
 
 const run = async alias => {
