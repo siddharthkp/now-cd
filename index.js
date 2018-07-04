@@ -41,7 +41,7 @@ if (!alias) {
 }
 
 /* replace any . in branch name */
-alias = alias.split('.now.sh')[0].replace(/\./g, '--') + '.now.sh'
+alias = alias.split('.now.sh')[0].replace(/\./g, '') + '.now.sh'
 
 const run = async alias => {
   /* Step 0: Set pending status on build */
