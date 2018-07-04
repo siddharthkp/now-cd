@@ -39,6 +39,7 @@ if (!alias) {
   if (branch === 'master') alias = `${authorAndRepo}.now.sh`
   else alias = `${authorAndRepo}-${branch}.now.sh`
 }
+alias = alias.replace(/./, '--')
 
 const run = async alias => {
   /* Step 0: Set pending status on build */
