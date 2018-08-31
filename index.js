@@ -19,6 +19,9 @@ const build = require('./build')
 const authorAndRepo = repo.replace('/', '-') // repo ~ siddharthkp/ci-env
 let deploymentBranches = []
 
+/* replace any . in branch name */
+branch = branch.replace(/\./g, '')
+
 /* alias according to branch name */
 let alias
 if (argv.alias) {
@@ -38,10 +41,8 @@ if (argv.alias) {
 if (!alias) {
   if (branch === 'master') alias = `${authorAndRepo}.now.sh`
   else alias = `${authorAndRepo}-${branch}.now.sh`
-}
+ }
 
-/* replace any . in branch name */
-alias = alias.split('.now.sh')[0].replace(/\./g, '') + '.now.sh'
 
 const run = async alias => {
   /* Step 0: Set pending status on build */
