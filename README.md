@@ -25,7 +25,7 @@ You need 2 tokens for `now-cd` to work
 
 2. Github API token
 
-    You can generate a token from [settings/tokens/new](https://github.com/settings/tokens/new), call it `NOW_CD_GITHUB_TOKEN`
+    You can generate a token (with repo permissions) from [settings/tokens/new](https://github.com/settings/tokens/new), call it `NOW_CD_GITHUB_TOKEN`
 
 Now set these in travis repository settings [This is how](https://docs.travis-ci.com/user/environment-variables/#Defining-Variables-in-Repository-Settings).
 
