@@ -1,6 +1,6 @@
 {
   "name": "now-cd",
-  "version": "1.3.6",
+  "version": "1.3.7",
   "description": "continuous deployment with now",
   "main": "index.js",
   "bin": "index.js",
@@ -11,7 +11,7 @@
   "author": "siddharthkp",
   "license": "MIT",
   "dependencies": {
-    "ci-env": "1.6.0",
+    "ci-env": "1.8.0",
     "execa": "0.8.0",
     "github-build": "1.2.0",
     "now": "11.1.15",
